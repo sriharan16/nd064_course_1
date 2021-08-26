@@ -32,6 +32,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: sriharan16/techtrends:latest
-      -
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}

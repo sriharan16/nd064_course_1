@@ -1,11 +1,31 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+docker build . -t techtrends -f ./Dockerfile
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+docker run -t -d --rm -p 7111:3111 --name techtrends techtrends
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+docker logs techtrends
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:Status request successfull
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:21] "GET /healthz HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:24] "GET / HTTP/1.1" 200 -
+INFO:app:Article "2020 CNCF Annual Report" retrieved!
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:26] "GET /1 HTTP/1.1" 200 -
+INFO:app:The "About Us" page is retrieved.
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:29] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:30] "GET /create HTTP/1.1" 200 -
+INFO:app:Article "test in docker" created!
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:41] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:41] "GET / HTTP/1.1" 200 -
+INFO:app:Article "test in docker" retrieved!
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:44] "GET /7 HTTP/1.1" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:172.17.0.1 - - [24/Aug/2021 18:16:50] "GET /metrics HTTP/1.1" 200 -

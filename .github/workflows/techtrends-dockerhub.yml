@@ -21,7 +21,6 @@ jobs:
             sriharan16/techtrends
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=semver,pattern={{major}}.{{minor}}
             type=sha
       -
         name: Set up QEMU

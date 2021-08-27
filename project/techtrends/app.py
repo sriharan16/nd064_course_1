@@ -57,12 +57,22 @@ def about():
 # Define the Health page
 @app.route('/healthz')
 def health():
-    response = app.response_class(
-        response=json.dumps({"result":"OK - healthy"}),
-        status=200,
-        mimetype='application/json'
-    )
-
+    try:
+        connection = get_db_connection()
+        connection.execute('SELECT count(*) FROM posts').fetchone()
+        response = app.response_class(
+            response=json.dumps({"result":"OK - healthy"}),
+            status=200,
+            mimetype='application/json'
+        )
+    except Exception:
+        response = app.response_class(
+            response=json.dumps({"result":"ERROR - unhealthy"}),
+            status=500,
+            mimetype='application/json'
+        )
+    finally:
+        connection.close()
     app.logger.info('Status request successfull')
     return response
 
